@@ -24,6 +24,7 @@ COPY ["reacteasypanel.client/reacteasypanel.client.esproj", "reacteasypanel.clie
 RUN dotnet restore "./ReactEasyPanel.Server/ReactEasyPanel.Server.csproj"
 COPY . .
 WORKDIR "/src/reacteasypanel.client"
+RUN npm ci
 RUN npm run build
 WORKDIR "/src/ReactEasyPanel.Server"
 RUN dotnet build "./ReactEasyPanel.Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
